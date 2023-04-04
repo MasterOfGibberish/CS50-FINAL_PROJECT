@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block body %}
+
+    <div class="card text-bg-primary mb-3" style="max-width: 18rem; margin-left: 375px; margin-top: 70px">
+      <div class="card-header">FREE Chat GTP!</div>
+      <div class="card-body">
+        <p class="card-text">You will not need to pay for the chat GTP because we created a cheaper and fully functional duplicate</p>
+      </div>
+    </div>
+
+    <div class="card text-bg-info mb-3" style="max-width: 18rem; margin-left: 375px;">
+      <div class="card-header">Security!</div>
+      <div class="card-body">
+        <p class="card-text">Internet security is very important these days, so we're bringing you a free password generator and text encoder that will make sure your messages can't be deciphered, even by your parents! ;)</p>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem; margin-left: 375px; margin-bottom: 200px">
+      <img src="/static/Balandis.jpg" class="card-img-top" alt="My image">
+      <div name="card" class="card-body">
+        <h5 class="card-title">Click below to download</h5>
+        <p id="download-count" class="card-text">It is a reliable and useful everywhere product that have already been downloaded by thousands of users</p>
+        <a id="download-button" class="button button-second" data-type="circle type="button" class="btn btn-primary" style="margin-left: 75px;" data-bs-toggle="tooltip" href="/static/FINAL_PROJECT_DOWNLOAD.zip" download type="exe" data-bs-placement="bottom" data-bs-title="yes... YESS! Click it CLICK IT! :)">
+          Download
+        </a>
+        <script>
+
+          var downloadButton = document.getElementById("download-button");
+          downloadButton.addEventListener("click", function() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/increment_downloads", true);
+            xhr.send();
+
+
+          });
+
+          if (document.body.animate) {
+            document
+              .querySelectorAll(".button")
+              .forEach((button) => button.addEventListener("click", pop));
+          }
+
+          function pop(e) {
+            for (let i = 0; i < 30; i++) {
+              createParticle(e.clientX, e.clientY, e.target.dataset.type);
+            }
+          }
+
+          function createParticle(x, y, type) {
+            const particle = document.createElement("particle");
+            document.body.appendChild(particle);
+
+            const size = Math.floor(Math.random() * 20 + 5);
+
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+
+            const destinationX = x + (Math.random() - 0.5) * 2 * 75;
+            const destinationY = y + (Math.random() - 0.5) * 2 * 75;
+
+            switch (type) {
+              case "square":
+                particle.style.background = `hsl(${Math.random() * 90 + 270}, 70%, 60%)`;
+                particle.style.border = "1px solid white";
+                break;
+              case "circle":
+                particle.style.background = `hsl(${Math.random() * 90 + 180}, 70%, 60%)`;
+                particle.style.borderRadius = "50%";
+                break;
+              default:
+                particle.style.background = `hsl(${Math.random() * 90 + 180}, 70%, 60%)`;
+            }
+
+            const animation = particle.animate(
+              [
+                {
+                  // Set the origin position of the particle
+                  // We offset the particle with half its size to center it around the mouse
+                  transform: `translate(${x - size / 2}px, ${y - size / 2}px)`,
+                  opacity: 1,
+                },
+                {
+                  // We define the final coordinates as the second keyframe
+                  transform: `translate(${destinationX}px, ${destinationY}px)`,
+                  opacity: 0,
+                },
+              ],
+              {
+                duration: 500 + Math.random() * 1000,
+                easing: "cubic-bezier(0, .9, .57, 1)",
+                delay: Math.random() * 200,
+              }
+            );
+
+            animation.onfinish = () => {
+              particle.removeParticle;
+            };
+          }
+
+          function removeParticle(e) {
+            e.srcElement.effect.target.remove();
+          }
+        </script>
+
+      </div>
+    </div>
+
+
+{% endblock %}
